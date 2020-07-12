@@ -1,0 +1,12 @@
+Requirements for AM Events
+
+These are the requirements to use AM Events.
+
+ 1) XOOPS version 2.0.3 or later (this version has been developed on
+    XOOPS 2.0.7, but *should* work on earlier vesrions.)
+ 2) A PHP compatible webserver.
+ 3) PHP v4.0.6 or later - please note that it has not yet been tried 
+    with PHP v5.
+ 4) mySQL 3.23.x - although, it should also work with mySQL v4. 
+ 
+ 

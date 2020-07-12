@@ -1,0 +1,55 @@
+
+<script language="javascript">
+<!-- begin/hide
+
+var yearEnd = "";
+var yearMonth = "";
+var yearDay = "";
+
+function InitSaveVariables(form) {
+   yearEnd   = document.getElementById('yearend').value;
+   yearMonth = document.getElementById('monthend').value;
+   yearDay   = document.getElementById('dayend').value;
+}
+
+function copyDate(form) {
+   if (form.copy.checked) {
+      InitSaveVariables(form);
+      form.yearend.value  = document.getElementById('year').value;
+      form.monthend.value = document.getElementById('month').value;
+      form.dayend.value   = document.getElementById('day').value;
+   }
+   else {
+      form.yearend.value  = yearEnd;
+      form.monthend.value = yearMonth;
+      form.dayend.value   = yearDay;
+   }
+}
+
+// -->
+</script>
+<script type="text/javascript" language="JavaScript">
+<!-- //begin/hide
+
+function checkfields() {
+
+	if(document.getElementById("formdata[event_name]").value.length < 3) {
+      alert("<{$form_title_alert}>");
+      return false; // 
+   }
+
+   if(document.getElementById("formdata[country]").value == 0) {
+      alert("<{$form_category_alert}>");
+      return false; // 
+   }
+   
+	return true;
+   
+} // end function
+
+//-->
+</script>
+
+
+<{$submitform}>
+

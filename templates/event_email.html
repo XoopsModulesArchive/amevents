@@ -1,0 +1,135 @@
+
+<!--  ADD user logged on -->
+<{if $form eq "start" && $email_allow eq 1}>
+<{foreach item=email from=$email}>
+      <script Language="JavaScript">
+        function isEmailAddr(email) {
+          var result = false;
+          var theStr = new String(email);
+          var index = theStr.indexOf("@");
+            if (index > 0) {
+               var pindex = theStr.indexOf(".",index);
+               if ((pindex > index+1) && (theStr.length > pindex+1))
+	           result = true;
+            }
+            return result;
+        }
+
+        function validateForm(theForm) {
+	      // Start ------->
+	      //if (!validRequired(theForm.fullname,"Name"))
+		  //return false;
+
+	      //if (!validEmail(theForm.email,"Email Address",true)) //recip
+          if (!validEmail(document.getElementById('recip'),"Email Address",true))
+		  return false;
+
+	      //if (!validDate(theForm.available,"Date Available",true))
+		  //return false;
+
+	      //if (!validNum(theForm.yearsexperience,"Years Experience",true))
+		  //return false;
+	      // <--------- End
+	
+	      return true;
+        }
+      </script>
+<form name="form" id="form" method="post" action="email.php" onsubmit="return validateForm(this)">
+<input type="hidden" name="formdata[id]" value="<{$emailid}>" />
+<input type="hidden" name="formdata[set]" value="1" />
+<table border="1" width="100%" cellspacing="1" cellpadding="0" class="outer">
+  <tr>
+    <th colspan="2"><{$headtitle}></th>
+  </tr>
+  <!-- switch for user regged -->
+  <{if $regged eq 1}>
+  <tr>
+    <td class="head" nowrap><{$yourname}></td>
+    <td class="even"><{$uname}> <input type="hidden" name="formdata[name]" value="<{$uname}>" /></td>
+  </tr>
+  <tr>
+    <td class="head" nowrap><{$youremail}></td>
+    <td class="even"><{$uemail}> <input type="hidden" name="formdata[email]" value="<{$uemail}>" /></td>
+  </tr>
+  <{/if}>
+  <{if $regged neq 1}>
+  <tr>
+    <td class="head" nowrap><{$yourname}></td>
+    <td class="even"><input type="text" name="formdata[name]" value="" size="30" /></td>
+  </tr>
+  <tr>
+    <td class="head" nowrap><{$youremail}></td>
+    <td class="even"><input type="text" name="formdata[email]" value="" size="30" /></td>
+  </tr>
+  <{/if}>
+  <!-- // switch for user regged -->
+  <tr>
+    <td class="head"><{$recipient}></td>
+    <td class="even"><input type="text" name="formdata[recipient]" id="recip" value="" size="30" /></td>
+  </tr>
+  <{if $email_allowown eq 1}>
+  <tr>
+    <td class="head"><{$emailmsg}> <br /><span style="font-size: smaller;"><{$emailmsgdsc}></span></td>
+    <td class="even">
+      <script type="text/javascript" language="JavaScript">
+        <!-- Begin
+        function textCounter(field, countfield, maxlimit) {
+        //function textCounter(maxlimit) {
+            //var field = document.getElementById(message).form;
+            //var countfield = document.getElementById(remLen);
+            if (field.value.length > maxlimit) // if too long...trim it!
+            field.value = field.value.substring(0, maxlimit);
+            // otherwise, update 'characters left' counter
+            else 
+            countfield.value = maxlimit - field.value.length;
+        }
+        // End -->
+      </script>
+      <!-- <textarea name="formmessage" rows="8" cols="40" onKeyDown="textCounter(this.form.formmessage,this.form.remLen,<{$maxchars}>);" onKeyUp="textCounter(this.form.formmessage,this.form.remLen,<{$maxchars}>);"></textarea> -->
+      <textarea name="formdata[message]" id="msg" rows="8" cols="40" onKeyDown="textCounter(document.getElementById('msg'),this.form.remLen,<{$maxchars}>);" onKeyUp="textCounter(document.getElementById('msg'),this.form.remLen,<{$maxchars}>);"></textarea>
+      <!-- <textarea name="formdata[message]" id="message" rows="8" cols="40" onKeyDown="textCounter(<{$maxchars}>);" onKeyUp="textCounter(<{$maxchars}>);"></textarea> -->
+      <br />
+      <input readonly type="text" id="remLen" name="remLen" size="4" maxlength="4" value="<{$maxchars}>" />
+    </td>
+  </tr>
+  <{/if}>
+  <tr>
+    <td class="head"></td>
+    <td class="even">
+      <input type="submit" value="<{$emailsend}>" />
+      <input type="reset" value="<{$emailreset}>" />
+      <br />
+      <span style="font-size: smaller;"><{$emailsecnote}></span> 
+    </td>
+  </tr>
+</table>
+</form>
+
+<{/foreach}>
+<{/if}>
+
+<{if $form eq "sent"}>
+<{foreach item=email from=$email}>
+<table border="1" width="100%" cellspacing="1" cellpadding="0" class="outer">
+  <tr>
+    <th colspan="2"><{$headtitle}></th>
+  </tr>
+  <tr>
+    <td class="head"><{$recipient}></td>
+    <td class="even"><{$email.recipient}></td>
+  </tr>
+  <{if $email_allowown eq 1}>
+  <tr>
+    <td class="head" valign="top"><{$emailmsg}></td>
+    <td class="even"><{$email.message}></td>
+  </tr>
+  <{/if}>
+  <tr>
+    <td class="head"></td>
+    <td class="even"></td>
+  </tr>
+</table>
+<{/foreach}>
+<{/if}>
+
+

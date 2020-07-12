@@ -1,0 +1,17 @@
+
+---------------------------------------------------------------------
+"To Do" list for AM Events
+---------------------------------------------------------------------
+
+Please see the AM Events "suggestions" at:
+http://support.sirium.net/modules/newbb/viewforum.php?forum=8 
+to see the latest feature requests, or to add your own.
+
+ o Update admin area to bring it in-line with the Articles module.
+ o Update forms to use XOOPS forms.
+ o Possibly add categories?
+ o Add previous/next month links in calendar block.
+ o Repeat events daily/weekly/monthly?
+ o Send event reminders via e-mail.
+ o page title in title bar
+ o change ending date for event (expires end of last day)?

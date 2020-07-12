@@ -1,0 +1,100 @@
+
+---------------------------------------------------------------------
+AM Events update history log
+---------------------------------------------------------------------
+
+Key:
+ + Added feature.
+ - Removed.
+ ! Bug fix.
+ o General comment.
+
+
+AM Events v0.22:
+================
+ 
+ ! Made a small change to the upcoming events block's options so that the date
+   is displayed correctly in XOOPS 2.2.
+ ! Fix a buglet where the "see all events" and "submit events" links would not 
+   be shown in the upcoming events module, if there were no events to display.
+ o Re-written mini-calendar to make less hits to the database.
+ o Added class for mini-calendar main table, it has no properties yet, but you
+   can add them if you want.
+ + Added DHTML pop ups to mini-calendar date links, this is handy where there 
+   are two or more events on one day.
+ 
+ 
+AM Events v0.21:
+================
+
+ ! Events would originally have expired at the start of the day at which the 
+   event ended, this has now been changed so it should end at end of the day.
+ + User's posts will now show up in their profile.
+ + Author can now be changed. Either when posted by admin, or when edited.
+ o Changed some XOOPS depreciated functions.
+ + Added date ends column in event list admin, and to validate list.
+ ! "Ended" status/link in admin events listing now goes by date/time end and not
+   Start.
+ o If event only on one day, the end date will now be set to the "start" date, 
+   and time set to 23:59:59, so it will time out at the end of day. This is to 
+   help with expiring events at a more appropriate time.
+ + Now supports WYSIWYG editors.
+ o Changed event_description type to MEDIUMTEXT to prevent problems with event 
+   text being truncated.
+ + User submit function can now be disabled (submit links in menu and blocks 
+   will be hidden when disabled).
+ + Events can now be auto approved (added without admin having to check).
+ + Events that have expired can now be left on view.
+ ! Changed expire SQL code in block.
+ + There is now a separate admin notification for auto approved events.
+ + New notification of events for users.
+ o Added a "no events to display" message to main listing page.
+
+ 
+AM Events v0.20:
+================
+
+ + Changed index/print links at foot of item to icon images.
+ + Added added edit and delete links and icons to event page.
+ o Event name now displays in header bar on item page.
+ + Can now display event name in browser title.
+ + Added "posted by" and username (item page).
+ o Tidied language constants to help prevent clashes, and make translating 
+   easier.
+ + Added missing URL field to print.php
+ + Added language constants to print.php
+ + Made printable version optional from prefs.
+ + Changed user submit form to XOOPs form lib with its pop-up calendar.
+ o Changed user submit confirm message.
+ o Changed over to XOOPS own built in date format function (this removes the 
+   function name clash with wf-sections).
+ o changed from "shorthand" php echo (<?=$var?>) to prevent problems on servers
+   where this is not allowed.
+ ! Fixed cancel delete bug in eventadmin.php - pressing cancel would report 
+   event being deleted.
+ 
+ 
+AM Events v0.19:
+================
+
+ + Updated module logo.
+ + Created a script to update countries - there are now over 200, so just about
+   everywhere should be more or less covered. 
+ + Added flags for new countries, although not all are available yet. 
+ + Some minor changes
+ 
+ 
+AM Events v0.18:
+================
+
+ o Changed validate view to show all unvalidated events, otherwise events can
+   "disappear" after its date had passed.
+ ! Fixed validate events preview.
+ ! Fixed extra set of admin menus appearing in delete event confirmations from
+   validate page.
+ + Added comments.
+ + Added date column to validate event page.
+ + Added admin notification of new user submitted events.
+ + Added option to allow only logged in users to submit events.
+ + Added date options for event listing, event details/print and admin.
+ 

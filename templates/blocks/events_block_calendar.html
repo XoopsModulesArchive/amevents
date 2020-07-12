@@ -1,0 +1,74 @@
+
+
+<style type="text/css">
+<!--
+/* Main table */
+#eventcalendar .ameventscal {
+}
+/* Controls the looks of current day's date */
+#eventcalendar .today {
+   /*color: Red;*/
+   background-color: #CADCEE;
+   text-align: center;
+   font-size: smaller;
+   font-weight: bold; 
+}
+/* Controls to the look of every other day's date */
+#eventcalendar .days {
+   /*background-color: #DCDCDC; */
+   text-align: center;
+   font-size: smaller;
+}
+/* Controls the look of "blank" days/dates */
+#eventcalendar .blankday {
+   /*background-color: #F8F8F8;*/
+}
+/* Controls the look of day text */
+#eventcalendar .daynames {
+  /* background-color: #dee3e7; */ 
+   text-align: center;
+   font-weight: bold;
+   font-size: smaller;
+}
+/* Controls the looks of the month and year text */
+#eventcalendar .monthyeartext {
+   text-align: center;
+   font-weight: bold;
+   font-size: smaller;
+}
+#eventcalendar a:link {
+   color: #2F4F4F;
+   text-decoration: underline;
+}
+#eventcalendar a:visited {
+   color: #2F4F4F;
+   text-decoration: underline;
+}
+#eventcalendar a:hover {
+   color: #2F4F4F;
+   text-decoration: none;
+}
+
+/* 
+This MUST be present here, or in the theme CSS file for 
+the event mini calendar pop-up to work properly.   
+*/
+.ameventsmcdiv {
+	display: none; /* DO not remove this line */
+	position: absolute; /* DO not remove this line */
+	background-color: white;
+	width: 140px;
+	border: 1px solid black;
+}
+-->
+</style>
+
+
+<div id="eventcalendar">
+<{foreach item=ameventscal from=$block.ameventcal}>
+    
+    <{$ameventscal.table}>
+
+<{/foreach}>
+</div>
+

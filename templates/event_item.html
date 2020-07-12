@@ -1,0 +1,116 @@
+
+<{foreach item=event from=$amevents}> 
+
+<table border="0" class="outer">
+  <tr>
+    <th colspan="2"><{$event.event_name}><!--<{$eventview_caption}>--></th>
+  </tr>
+ 
+  <tr>
+    <td class="itemInfo" colspan="2">
+      <span style="font-style: italic; font-size: smaller;">
+        <!-- header thingy -->
+        <{$posted}> 
+        
+        <!-- <{$postedon}> DATE -->
+        
+        <{$postedby}>
+        <a href="<{$xoops_url}>/userinfo.php?uid=<{$event.event_uid}>"><{$event.event_uname}></a>
+        &nbsp;
+      </span>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong><{$eventtitle_caption}></strong></td>
+    <td><{$event.event_name}></td>
+  </tr>  
+  <tr>
+    <td><strong><{$eventstart_caption}></strong></td>
+    <td><{$event.event_date_start}></td>
+  </tr>
+  <tr>
+    <td><strong><{$eventend_caption}></strong></td>
+    <td><{$event.event_date_end}></td>
+  </tr>
+  <tr>
+    <td><strong><{$eventdur_caption}></strong></td>
+    <td><{$event.event_duration}> day(s)</td>
+  </tr>
+  <tr>
+    <td><strong><{$eventloc_caption}></strong></td>
+    <td><{$event.event_country}></td>
+  </tr>
+  <tr>
+    <td><strong><{$eventurl_caption}></strong></td>
+    <td><a href="<{$event.event_url}>" target="_blank"><{$event.event_url}></a></td>
+  </tr>
+  <tr><td colspan="2" height="5"></td></tr>
+  <tr>
+    <td colspan="2">
+      <strong><{$eventdetails_caption}></strong><br />
+      <{$event.event_description}>
+    </td>
+  </tr>
+  
+  <tr><td colspan="2" height="3"></td></tr><!-- spacer -->
+  <tr>
+    <td colspan="2" class="itemFoot">
+      
+      <a href="index.php"><img src="images/back.gif"  title="<{$index_link_text}>" height="16" width="16" alt="<{$index_link_text}>" border="1"></a>
+      <!-- add print option thingy -->
+      <{if $printversion eq 1}>
+      <a href="print.php?id=<{$event.event_id}>" target="_blank"><img src="images/print.gif" title="<{$print_art_link}>" height="16" width="16" alt="<{$print_art_link}>" border="1"></a>
+      <{/if}>
+      
+      <!-- <img src="images/pdf.png"> -->
+      <{if $emailtofriend eq 1}>
+      <a href="email.php?id=<{$event.event_id}>"><img src="images/email.gif" title="<{$adminurlprint}>" height="16" width="16" alt="<{$adminurlprint}>" border="1"></a>
+      <{/if}>
+      <{if $isadmin eq 1}>
+      <a href="admin/eventadmin.php?op=edit&id=<{$event.event_id}>"><img src="images/pencil.gif" title="<{$adminurledit}>" height="16" width="16" alt="<{$adminurledit}>" border="1"></a>
+      <a href="admin/eventadmin.php?op=del&id=<{$event.event_id}>"><img src="images/exit.gif" title="<{$adminurldel}>" height="16" width="16" alt="<{$adminurldel}>" border="1"></a>
+      <{/if}>
+    </td>
+  </tr>
+
+</table>
+<!-- 
+<table width="100%">
+  <tr>
+    <td style="text-align: center;">
+      <a href="index.php"><{$index_link_text}></a> 
+      <strong>::</strong> 
+      <a href="print.php?id=<{$event.event_id}>" target="_blank"><{$print_art_link}></a>
+
+      <{if $email_allow neq 1}>
+      <strong>::</strong>
+      <a href="email.php?id=<{$article_id}>"><{$email_friend}>email</a>
+      <{/if}>
+
+    </td>
+  </tr>
+</table>
+-->
+<{/foreach}>
+
+<{include file='db:system_notification_select.html'}>
+
+<div style="text-align: center; padding: 3px; margin: 3px;">
+  <{$commentsnav}>
+  <{$lang_notice}>
+</div>
+
+<div style="margin: 3px; padding: 3px;">
+<!-- start comments loop -->
+<{if $comment_mode == "flat"}>
+  <{include file="db:system_comments_flat.html"}>
+<{elseif $comment_mode == "thread"}>
+  <{include file="db:system_comments_thread.html"}>
+<{elseif $comment_mode == "nest"}>
+  <{include file="db:system_comments_nest.html"}>
+<{/if}>
+<!-- end comments loop -->
+</div>
+
+

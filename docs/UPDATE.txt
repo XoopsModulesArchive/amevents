@@ -1,0 +1,66 @@
+
+---------------------------------------------------------------------
+Updating AM Events to the latest version.
+---------------------------------------------------------------------
+
+Upgrading to v0.21
+==================
+
+.:IMPORTANT:. 
+This release has some database structure changes over the previous release, and
+requires an update script to be run (more on this later). Because of this update
+you may wish to turn the site off as visitors may experience problems until the
+update is complete.
+
+Upload the AM Events folder into the modules folder on your web site, 
+over-writing existing files. Next navigate to the Modules admin area, and update
+AM Events by clicking the update icon next to its listing.
+
+As mentioned above, a separate script is provided to update the database. This
+is to save you from removing and re-installing AM Events, then having to 
+manually re-add any events (although, you may have to tweak some of the display
+settings). To do this, go to:
+
+ http://www.the-url-of-your-site.com/modules/amevents/update0.21.php
+ 
+All you need do is to click the button. A backup of the existing event data 
+table will be created and called "<prefix>_amevents_events_bak019" (where 
+<prefix> is the prefix to the table name defined when you installed XOOPS). You 
+can delete this at your leisure, but it may be worth checking the update is 
+working first. Please delete the update script when you are finished.
+
+
+
+Upgrading to v0.19a
+==================
+
+There are no database structure changes in this release, but there 
+are many more countries included, which can be added to existing 
+installs.
+
+ - Unpack the .zip or .tar.gz version of the archive you have 
+   downloaded and upload the folder called "amevents" to your
+   web space. If asked, over-write any existing files.
+ - Go to your Admin area, then: System -> Modules, click on the
+   "upgrade" icon to the right of the AM Events listing, and follow
+   the instructions.
+ - If you want to add 200+ countries to the drop-down list, go to
+   http://www.yoursitesurl.com/modules/amevents/update/update_countries.php
+   This will add all of the countries listed in xoops_amevents_country.csv
+   in the update folder.
+   You don't have to run this if you don't want to, or you can edit 
+   the CVS to suit your needs - just as long as it stays in the same 
+   format of a semi-colon delimited file, e.g., 
+   "country name";"country code"
+ - Remove the "update" folder and files.
+
+This list was taken from the ISO's list of 2 digit country codes - I
+apologise that it's only in English now, but I will adapt it so it
+can be localised in the future.
+
+The script checks to see if a country has already been added by 
+checking against the 2 digit country code, so will not add or over-
+write any countries already added with an identical code.
+
+There is no need to run this script if you have installed for the 
+first time.

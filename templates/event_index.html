@@ -1,0 +1,36 @@
+
+<table border="1">
+  <tr>
+    <th colspan="5"><{$eventlist_caption}></th>
+  </tr>
+  <tr>
+    <td class="head"><{$eventcol_caption}></td>
+    <td class="head"><{$datestartcol_caption}></td>
+    <td class="head"><{$dateendcol_caption}></td>
+    <td class="head"><{$datedurcol_caption}></td>
+    <td class="head">&nbsp;</td>
+  </tr>
+  
+<!-- start category loop -->
+<{if $noevents neq 1}>
+<{foreach item=amevent from=$amevents}>  
+  <tr>
+    <td class="<{$amevent.event_class}>"><a href="index.php?id=<{$amevent.event_id}>"><{$amevent.event_name}></a></td>
+    <td class="<{$amevent.event_class}>"><{$amevent.event_date_start}></td>
+    <td class="<{$amevent.event_class}>"><{$amevent.event_date_end}></td>
+    <td class="<{$amevent.event_class}>"><{$amevent.event_duration}> Days</td>
+    <td class="<{$amevent.event_class}>"><img src="images/flags/<{$amevent.event_country}>.gif" width="21" height="14" alt="<{$amevent.event_country}>"></td>
+  </tr>
+<{/foreach}>
+<{/if}>
+<{if $noevents eq 1}>
+  <tr>
+    <td class="odd" colspan="5" align="center"><{$noeventsmsg}></td>
+  </tr>
+<{/if}>
+</table>
+
+<{include file='db:system_notification_select.html'}>
+
+
+

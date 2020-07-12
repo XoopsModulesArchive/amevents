@@ -1,0 +1,17 @@
+<ul>
+<{foreach item=upevents from=$block.upevents}>
+    <li>[<{$upevents.event_date_start}>]
+    <br />
+    <a href="<{$xoops_url}>/modules/amevents/index.php?id=<{$upevents.id}>"><{$upevents.title}></a>
+    </li>
+
+<{/foreach}>
+
+<!-- <{$block.showsublink}> -->
+
+
+<li><a href="<{$xoops_url}>/modules/amevents/index.php"><{$block.mb_event_all}></a></li>
+<{if $block.showsublink eq 1}>
+<li><a href="<{$xoops_url}>/modules/amevents/submit.php"><{$block.mb_event_submit}></a></li>
+<{/if}>
+</ul>
